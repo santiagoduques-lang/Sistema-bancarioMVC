@@ -15,7 +15,7 @@ public class Cuenta {
     private double saldo;
 
     /** SOBRECARGA 1 del constructor: con saldo inicial. */
-    public Cuenta(String numero, String nombreDueo, Fecha fechaApertura, double saldo) {
+    public Cuenta(String numero, String nombreDueño, Fecha fechaApertura, double saldo) {
         this.numero = numero;
         this.nombreDueño = nombreDueño;
         this.fechaApertura = fechaApertura;
