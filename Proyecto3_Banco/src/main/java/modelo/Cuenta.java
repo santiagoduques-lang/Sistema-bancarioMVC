@@ -10,14 +10,14 @@ package modelo;
  */
 public class Cuenta {
       private String numero;
-    private String nombreDueno;
+    private String nombreDueño;
     private Fecha fechaApertura;
     private double saldo;
 
     /** SOBRECARGA 1 del constructor: con saldo inicial. */
-    public Cuenta(String numero, String nombreDueno, Fecha fechaApertura, double saldo) {
+    public Cuenta(String numero, String nombreDueo, Fecha fechaApertura, double saldo) {
         this.numero = numero;
-        this.nombreDueno = nombreDueno;
+        this.nombreDueño = nombreDueño;
         this.fechaApertura = fechaApertura;
         this.saldo = saldo;
     }
@@ -25,22 +25,35 @@ public class Cuenta {
     /** SOBRECARGA 2 del constructor: sin saldo inicial (empieza en 0). */
     public Cuenta(String numero, String nombreDueno, Fecha fechaApertura) {
         this.numero = numero;
-        this.nombreDueno = nombreDueno;
+        this.nombreDueño = nombreDueno;
         this.fechaApertura = fechaApertura;
         this.saldo = 0;
     }
 
-    public String getNumero() { return numero; }
-    public void setNumero(String numero) { this.numero = numero; }
+    public String getNumero() {
+        return numero;
+    }
 
-    public String getNombreDueno() { return nombreDueno; }
-    public void setNombreDueno(String nombreDueno) { this.nombreDueno = nombreDueno; }
+    public void setNumero(String numero) {
+        this.numero = numero;
+    }
 
-    public Fecha getFechaApertura() { return fechaApertura; }
-    public void setFechaApertura(Fecha fechaApertura) { this.fechaApertura = fechaApertura; }
+    public String getNombreDueño() {
+        return nombreDueño;
+    }
 
-    public double getSaldo() { return saldo; }
-    public void setSaldo(double saldo) { this.saldo = saldo; }
+    public void setNombreDueño(String nombreDueño) {
+        this.nombreDueño = nombreDueño;
+    }
+
+    public double getSaldo() {
+        return saldo;
+    }
+
+    public void setSaldo(double saldo) {
+        this.saldo = saldo;
+    }
+
     
      public boolean consignar(double valor) {
         if (valor > 0) {
@@ -52,5 +65,18 @@ public class Cuenta {
     }
      public boolean retirar(double valor) {
         return false;
+    }
+     
+ public String obtenerDatos() {
+        return "Número: " + numero + " | Dueño: " + nombreDueño + " | Fecha de apertura: " + fechaApertura + " | Saldo: " + saldo;
+    }
+
+ 
+    public String obtenerDatos(boolean soloSaldo) {
+        if (soloSaldo) {
+            return "Saldo de la cuenta " + numero + ": " + saldo;
+        } else {
+            return obtenerDatos();
+        }
     }
 }
