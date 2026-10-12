@@ -12,18 +12,42 @@ package modelo;
 
     private double cupoSobregiro;
 
-    public CuentaCorriente(String numero, String nombreDueno, Fecha fechaApertura,
+    public CuentaCorriente(String numero, String nombreDueño, Fecha fechaApertura,
                            double saldo, double cupoSobregiro) {
-        super(numero, nombreDueno, fechaApertura, saldo);
+        super(numero, nombreDueño, fechaApertura, saldo);
         this.cupoSobregiro = cupoSobregiro;
     }
 
-    public CuentaCorriente(String numero, String nombreDueno, Fecha fechaApertura,
+    public CuentaCorriente(String numero, String nombreDueño, Fecha fechaApertura,
                            double cupoSobregiro) {
-        super(numero, nombreDueno, fechaApertura);
+        super(numero, nombreDueño, fechaApertura);
         this.cupoSobregiro = cupoSobregiro;
     }
 
-    public double getCupoSobregiro() { return cupoSobregiro; }
-    public void setCupoSobregiro(double cupoSobregiro) { this.cupoSobregiro = cupoSobregiro; }
-}
+    public double getCupoSobregiro() {
+        return cupoSobregiro;
+    }
+
+    public void setCupoSobregiro(double cupoSobregiro) {
+        this.cupoSobregiro = cupoSobregiro;
+    }
+       @Override
+    public boolean retirar(double valor) {
+        if (valor > 0 && valor <= getSaldo() + cupoSobregiro) {
+            setSaldo(getSaldo() - valor);
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    @Override
+    public String obtenerDatos() {
+        return "CUENTA CORRIENTE | " + super.obtenerDatos()
+                + " | Cupo de sobregiro: " + cupoSobregiro
+                + " | Disponible para retirar: " + (getSaldo() + cupoSobregiro);
+    }
+
+    
+    
+    }
