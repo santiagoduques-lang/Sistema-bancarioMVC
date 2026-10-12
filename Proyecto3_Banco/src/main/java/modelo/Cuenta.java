@@ -41,4 +41,16 @@ public class Cuenta {
 
     public double getSaldo() { return saldo; }
     public void setSaldo(double saldo) { this.saldo = saldo; }
+    
+     public boolean consignar(double valor) {
+        if (valor > 0) {
+            saldo = saldo + valor;
+            return true;
+        } else {
+            return false;
+        }
+    }
+     public boolean retirar(double valor) {
+        return false;
+    }
 }
